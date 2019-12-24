@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.service.FileProcessingService;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @EnableScheduling
 @EnableDiscoveryClient
 @RestController
+@EnableSwagger2
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
 public class FileProcessingServiceApplication {
 
@@ -24,7 +27,7 @@ public class FileProcessingServiceApplication {
 		SpringApplication.run(FileProcessingServiceApplication.class, args);
 	}
     
-    @Scheduled(fixedDelay = 2000)
+    @Scheduled(fixedDelay = 200000)
     public void FileProcessJob() {
 		service.processFile(null);
     }
